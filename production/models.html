@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PULSE Dashboard </title>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img class="img-circle profile_img" src="images/user.png">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>PHOs Singapore</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br /><br /><br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>PULSE Dashboard</h3>
+                <ul class="nav side-menu">
+                  <li><a href="index.html"><i class="fas fa-chart-area"></i> Data Collection</a></li>
+                  <li><a href="echarts.html"><i class="fas fa-chart-area"></i> Pilot Site Data</a></li>
+                  <li><a href="models.html"><i class="fas fa-chart-area"></i> Models risks</a></li>
+                    
+                  <li><a href="citychallenge.html"><i class="fas fa-chess-pawn"></i> City Challenge</a></li>
+                  <li><a href="http://pulse.gesp.it/pwg/main"><i class="fa fa-desktop"></i> WebGIS</a></li>
+                  <li><a href="senslog.html"><i class="fa fa-table"></i>  Sensor Signals</a> </li>
+                  <li><a href="outdoor.html"><i class="fab fa-bluetooth"></i> Outdoor Beacons</a> </li>
+                  <li><a><i class="fa fa-globe"></i> Wellbeing <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="airquality.html">Air Quality Singapore</a></li>
+                      <li><a href="aqcities.html">Open AQ Cities</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="chartjs.html"><i class="fa fa-table"></i>  Vizualisations</a> </li>
+                  <li><a href="contact.html"><i class="fa fa-table"></i>  Contact</a> </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <h2> <i class="fa fa-bars" aria-hidden="true"></i> PULSE</h2>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Admin
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;">Services</a></li>
+                    <li><a href="javascript:;">Users</a></li>
+                    <li><a href="javascript:;">Houses</a></li>
+                    <li><a href="javascript:;">Gateways</a></li>
+                    <li><a href="javascript:;">SensApps</a></li>
+                    <li><a href="javascript:;">Knowledge</a></li>
+                    <li><a href="javascript:;">Open Data</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+<!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">           
+            <div class="clearfix"></div>
+
+            <div class="row">
+                 
+                <div class="col-lg-6 col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Health Condition Tests</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content" id="testForm">
+                                <div class="col-sm-12">
+                                    <div class="btn-group btn-group-justified">
+                                        <a type="button" class="active btn btn-default" id="diabetesBtn">Type 2 Diabetes</a>
+                                        <a type="button" class="btn btn-default" id="asthmaBtn">Asthma</a>
+                                    </div>
+                                </div>
+                                <div id="diabetesDiv">
+                                    <br /><br />
+                                    <form role="form" id="diabetesForm" data-parsley-validate>
+                <br /><br />
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="email">Gender:</label><br>
+                            <input type="radio" class="flat icheck-greensea" name="gender" value="female" checked> Female<br>
+                            <input type="radio" class="flat icheck-greensea" name="gender" value="male"> Male<br>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Age (25 - 84):<span class="required"></label>
+                            <input id="age_D" class="form-control" type="text" name="age">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Height (cm):<span class="required"></label>
+                            <input id="height_D" class="form-control" type="text" name="height">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Weight (kg):<span class="required"></label>
+                            <input id="weight_D" class="form-control" type="text" name="weight">
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ethnicity<span class="required"></label>
+                    <select id="ethSelect" class="form-control" name="channel">
+                        <option>White or not stated") %></option>
+                        <option>Indian</option>
+                        <option>Pakistani</option>
+                        <option>Bangladeshi</option>
+                        <option>Other Asian</option>
+                        <option>Black Caribbean</option>
+                        <option>Black African</option>
+                        <option>Chinese</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div id="error_D"></div>
+                <hr>
+                <div class="form-group">
+                    <label class="control-label">Do you have any learning disability:</label><br>
+                    <input id="learningR" type="radio" name="learning_dis" value="learning_disY"> Yes
+                    <input type="radio" name="learning_dis" value="learning_disN" checked> No<br>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Have you ever suffered a cardiovascular disease:</label><br>
+                    <input id="cdvR" type="radio" name="cdv" value="cdvY"> Yes
+                    <input type="radio" name="cdv" value="cdvN" checked> No<br>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Have you ever been told by your doctor that you have high blood pressure (hypertension):</label><br>
+                    <input id="hyptR" type="radio" name="hypt" value="hyptY"> Yes
+                    <input type="radio" name="hypt" value="hyptN" checked> No<br>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Do you have a parent, sibling and/or child diagnosed with Type 2 diabetes:</label><br>
+                    <input id="fh_diabR" type="radio" name="fh_diab" value="fh_diabY"> Yes
+                    <input type="radio" name="fh_diab" value="fh_diabN" checked> No<br>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Smoking Habits<span class="required"></label>
+                    <select id="smokeSelect_D" class="form-control" name="channel">
+                        <option>non-smoker</option>
+                        <option>ex-smoker</option>
+                        <option>light smoker (less than 10/day)</option>
+                        <option>moderate smoker (10 to 19/day)</option>
+                        <option>heavy smoker (over 20/day)</option>
+                    </select>
+                </div>
+                <br />
+                <h4>Additional Information <small>(Won’t be used to assess your risk of diabetes)</small></h4>
+                <hr>
+                <div id="exerciseDiv" class="form-group">
+                    <label class="control-label">On average, how much time do you spend on physical activity in a week? <br> Examples of physical activity are housework, cycling, jogging, swimming and playing sports/games.</label><br>
+                    <input type="radio" name="exercise" value="lowEx"> Less than 100 minutes<br>
+                    <input type="radio" name="exercise" value="middleEx"> Between 100 and 150 minutes<br>
+                    <input type="radio" name="exercise" value="highEx"> More than 150 minutes<br>
+                    <h5 id="activityS"></h5>
+                </div>
+                <div id="sugarDiv" class="form-group">
+                    <label class="control-label">How often do you drink sugary beverages? <br> Examples of sugary beverages are soft drinks, fruit juice, yoghurt drinks, coffee, tea and bubble tea.</label><br>
+                    <input type="radio" name="sugar" value="lowS"> 0 to 2 times per week<br>
+                    <input type="radio" name="sugar" value="middleS"> 3 to 6 times per week<br>
+                    <input type="radio" name="sugar" value="highS"> 7 or more times per week<br>
+                    <h5 id="sugarS"></h5>
+                </div>
+                <br />
+                <div class="form-group" style="float: right">
+                    <input id="clearDiabetesForm" type="button" class="btn btn-warning" value="<%=__('Clear')%>">
+                    <input id="submitDiabetesForm" type="button" class="btn btn-primary" value="<%=__('Submit')%>">
+                    <span></span>
+                </div>
+                
+                        </form>
+                                            <div id="result" class="hidden">
+                                                <div style="background-color: #f5f5f5; margin: 10px; padding: 10px">
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-sm-1 col-xs-12" >
+                                                            <img id="imageResultDiabetes" style="margin-top: 20px;">
+                                                        </div>
+                                                        <div class="col-md-10 col-sm-11 col-xs-12">
+                                                            <h4>Your assessment shows that you are</h4>
+                                                            <h2 id="resultTextDiabetes"></h2>
+                                                            <h4 id="lastSentenceDiabetes"></h4>
+                                                            <br />
+                                                            <h4>Did you know?</h4>
+                                                            <ul>
+                                                                <li><i>Your risk for developing diabetes increases with age.</i></li>
+                                                                <li><i>Your BMI puts you at risk of numerous health problems, including diabetes!</i>></li>
+                                                                <li><i>You are more likely to have pre-diabetes and develop diabetes if you have a family history of diabetes.</i></li>
+                                                                <li><i>Having high blood pressure is associated with an increased risk of developing diabetes!</i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="asthmaDiv" class="hidden">
+                                                <br /><br />
+                                                <form role="form" id="asthmaForm">
+                        <br />
+                        <h3>Personal Information</h3>
+                        <hr>
+                        <div class="form-group">
+                            <label class="control-label" for="email">Gender:</label><br>
+                            <input type="radio" name="gender" value="female" checked> Female<br>
+                            <input type="radio" name="gender" value="male"> Male<br>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><%= __("Age") %> (25 - 84):<span class="required"></label>
+                            <input id="age_A" class="form-control" type="text" name="age">
+                        </div>
+                        <div id="ageError_A"></div>
+                        <div class="form-group">
+                            <label class="control-label"><%= __("Height") %> (cm):<span class="required"></label>
+                            <input id="height_A" class="form-control" type="text" name="height">
+                        </div>
+                        <div id="heightError_A"></div>
+                        <div class="form-group">
+                            <label class="control-label"><%= __("Weight") %> (kg):<span class="required"></label>
+                            <input id="weight_A" class="form-control" type="text" name="weight">
+                        </div>
+                        <div id="weightError_A"></div>
+                        <div id="bmiDiv_A"></div>
+                        <br />
+                        <h3>General Information</h3>
+                        <hr>
+                        <div class="form-group">
+                            <label class="control-label"><%= __("Smoking Habits") %><span class="required"></label>
+                            <select id="smokeSelect_A" class="form-control" name="channel">
+                                <option><%= __("non-smoker") %></option>
+                                <option><%= __("ex-smoker") %></option>
+                                <option><%= __("light smoker (less than 10/day)") %></option>
+                                <option><%= __("moderate smoker (10 to 19/day)") %></option>
+                                <option><%= __("heavy smoker (over 20/day)") %></option>
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <label class="control-label"><%= __("Physical Activity ")%><span class="required"></label>
+                            <select id="activitySelect" class="form-control" name="channel">
+                                <option><%= __("Light") %></option>
+                                <option><%= __("Moderate") %></option>
+                                <option><%= __("Heavy") %></option>
+                            </select>
+                        </div><br>
+                        <div class="form-group" style="float: right">
+                            <input id="clearAsthmaForm" type="button" class="btn btn-md btn-warning" value="<%=__('Clear')%>">
+                            <input id="submitAsthmaForm" type="button" class="btn btn-md btn-primary" value="<%=__('Submit')%>">
+                            <span></span>
+                        </div>
+                        
+                        </form>
+                                        <div id="resultA" class="hidden">
+                                            <div style="background-color: #f5f5f5; margin: 10px; padding: 10px">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-1 col-xs-12" >
+                                                        <img id="imageResultAsthma" style="margin-top: 20px;">
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-11 col-xs-12">
+                                                        <h4>Your assessment shows that you are</h4>
+                                                        <h2 id="resultTextAsthma"></h2>
+                                                        <h4 id="lastSentenceAsthma"></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                              <div class="x_title">
+                                <h2>Cohort comparison</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                  </li>
+                                  <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                      <li><a href="#">Settings 1</a>
+                                      </li>
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                  </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+
+                                <div id="echart_scatter" style="height:350px;"></div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                              <div class="x_title">
+                                <h2>Ontology</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                  </li>
+                                  <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                      <li><a href="#">Settings 1</a>
+                                      </li>
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                  </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+                          
+                            <img width="100%" src="images/ontology.png">
+                                
+
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            PULSE Project
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- ECharts -->
+    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+    <script src="../vendors/echarts/map/js/world.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+	
+  </body>
+</html>

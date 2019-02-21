@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PULSE Dashboard </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img class="img-circle profile_img" src="images/user.png">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>PHOs Singapore</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br /><br /><br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>PULSE Dashboard</h3>
+                <ul class="nav side-menu">
+                  <li><a href="index.html"><i class="fas fa-chart-area"></i> Data Collection</a></li>
+                  <li><a href="echarts.html"><i class="fas fa-chart-area"></i> Pilot Site Data</a></li>
+                  <li><a href="models.html"><i class="fas fa-chart-area"></i> Models risks</a></li>
+                  
+                  <li><a href="citychallenge.html"><i class="fas fa-chess-pawn"></i> City Challenge</a></li>
+                  <li><a href="http://pulse.gesp.it/pwg/main"><i class="fa fa-desktop"></i> WebGIS</a></li>
+                  <li><a href="senslog.html"><i class="fa fa-table"></i>  Sensor Signals</a> </li>
+                  <li><a href="outdoor.html"><i class="fab fa-bluetooth"></i> Outdoor Beacons</a> </li>
+                  <li><a><i class="fa fa-globe"></i> Wellbeing <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="airquality.html">Air Quality Singapore</a></li>
+                      <li><a href="aqcities.html">Open AQ Cities</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="chartjs.html"><i class="fa fa-table"></i>  Vizualisations</a> </li>
+                  <li><a href="contact.html"><i class="fa fa-table"></i>  Contact</a> </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <h2> <i class="fa fa-bars" aria-hidden="true"></i> PULSE</h2>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Admin
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;">Services</a></li>
+                    <li><a href="javascript:;">Users</a></li>
+                    <li><a href="javascript:;">Houses</a></li>
+                    <li><a href="javascript:;">Gateways</a></li>
+                    <li><a href="javascript:;">SensApps</a></li>
+                    <li><a href="javascript:;">Knowledge</a></li>
+                    <li><a href="javascript:;">Open Data</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            
+            
+
+
+            <div class="row"> 
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Contact Participant <small>Notifications</small></h2>
+                  
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form class="form-horizontal form-label-left">
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Your Name</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" placeholder="Type your name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Channel</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select class="form-control">
+                            <option>Choose whatsapp or email</option>
+                            <option>Whatsapp</option>
+                            <option>Email</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Number</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" placeholder="Type in phone number">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email address</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" placeholder="Type in email address">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Message <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <textarea class="form-control" rows="3" placeholder="Type your message here"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+			<div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Participants Infos <small>Contacts</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Neighborhood 1</a>
+                          </li>
+                          <li><a href="#">Neighborhood 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          <th>Address</th>
+                          <th>Phone</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mdm Tai</td>
+                          <td>#10-223</td>
+                          <td>90393513</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Mr Yew</td>
+                          <td>#04-128</td>
+                          <td>90393514</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Mr Larry</td>
+                          <td>#08-229</td>
+                          <td>90393515</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>Mdm Aminah</td>
+                          <td>#08-229</td>
+                          <td>90393516</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>Mr Teo</td>
+                          <td>#08-210</td>
+                          <td>90393517</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            PULSE Project
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PULSE Dashboard </title>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img class="img-circle profile_img" src="images/user.png">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>PHOs Singapore</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br /><br /><br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>PULSE Dashboard</h3>
+                <ul class="nav side-menu">
+                  <li><a href="index.html"><i class="fas fa-chart-area"></i> Data Collection</a></li>
+                  <li><a href="echarts.html"><i class="fas fa-chart-area"></i> Pilot Site Data</a></li>
+                  <li><a href="models.html"><i class="fas fa-chart-area"></i> Models risks</a></li>
+
+                  <li><a href="citychallenge.html"><i class="fas fa-chess-pawn"></i> City Challenge</a></li>
+                  <li><a href="http://pulse.gesp.it/pwg/main"><i class="fa fa-desktop"></i> WebGIS</a></li>
+                  <li><a href="senslog.html"><i class="fa fa-table"></i>  Sensor Signals</a> </li>
+                  <li><a href="outdoor.html"><i class="fab fa-bluetooth"></i> Outdoor Beacons</a> </li>
+                  <li><a><i class="fa fa-globe"></i> Wellbeing <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="airquality.html">Air Quality Singapore</a></li>
+                      <li><a href="aqcities.html">Open AQ Cities</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="chartjs.html"><i class="fa fa-table"></i>  Vizualisations</a> </li>
+                  <li><a href="contact.html"><i class="fa fa-table"></i>  Contact</a> </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <h2> <i class="fa fa-bars" aria-hidden="true"></i> PULSE</h2>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Admin
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;">Services</a></li>
+                    <li><a href="javascript:;">Users</a></li>
+                    <li><a href="javascript:;">Houses</a></li>
+                    <li><a href="javascript:;">Gateways</a></li>
+                    <li><a href="javascript:;">SensApps</a></li>
+                    <li><a href="javascript:;">Knowledge</a></li>
+                    <li><a href="javascript:;">Open Data</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            
+            <div class="view-container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Deployed neighborhood <small>Real-time</small></h2><br>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    <div id="map" style="height: 500px;">test
+                    </div>
+                    <p>Average air quality (PSI): <b id="national_psi2">55</b> <span style="float:right"><small>last update: today</small></span></p>
+                    <!--<p>Average air quality (PSI): <b id="national_psi2"><%=psi.national%></b> <span style="float:right"><small>last update: <%=updated%></small></span></p>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Singapore population <small>Data analysis</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="graphDiv"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                <h2>Physical activities <small>Data</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-lg-4">
+                        <h3 style="color: #666666">Pulsair <small>App</small></h3>
+                        <br />
+                        <a href="https://itunes.apple.com/US/app/id1353010603?mt=8">
+                        <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple114/v4/1b/43/10/1b43103c-e00f-4270-935f-67907214ac64/AppIcon-0-1x_U007emarketing-0-0-85-220-0-10.png/246x0w.jpg" max-width="40%;"></img> </a>
+                    </div>
+                    <div class="col-lg-8">
+                        <h3 style="color: #666666">Global cohort <small>Progression</small></h3>
+                        <br />
+                        <div id="chart_plot_02" class="demo-placeholder"></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                <h2>Merging Data <small>Cross Analysis</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                        <br />
+                        <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script>
+
+function initMap() {
+
+    // Register Manual Beacons
+    var location = new google.maps.LatLng(1.364116, 103.855233);
+    var beacon_blk406A = new google.maps.LatLng(1.36214755, 103.85376358);
+    var beacon_blk406B = new google.maps.LatLng(1.36197057, 103.85421419);
+    var beacon_fitness = new google.maps.LatLng(1.36166757, 103.85446096);
+    var beacon_FoodCourtA = new google.maps.LatLng(1.36264898, 103.8555392);
+    var beacon_FoodCourtB = new google.maps.LatLng(1.36287959, 103.85539973);
+    var beacon_MarketA = new google.maps.LatLng(1.3626168, 103.85511005);
+    var beacon_BusStation = new google.maps.LatLng(1.36221459, 103.85574842);
+    var beacon_CommunityC = new google.maps.LatLng(1.36395753, 103.85412836);
+    var beacon_SACBeaconA = new google.maps.LatLng(1.36503547, 103.85330761);
+    var beacon_SACBeaconB = new google.maps.LatLng(1.36498721, 103.85321641);
+    var beacon_SACAntenna = new google.maps.LatLng(1.36459035, 103.85693395);
+
+    var beacon_BusStation2 = new google.maps.LatLng(1.364394, 103.852525);
+    var beacon_BusStation3 = new google.maps.LatLng(1.362866, 103.855947);
+    var beacon_BusStation4 = new google.maps.LatLng(1.362033, 103.853073);
+    var beacon_fitness2 = new google.maps.LatLng(1.363727, 103.853361);
+    var aqiicon = new google.maps.LatLng(1.362837, 103.856869);
+
+    var bike01 = new google.maps.LatLng(1.36459435, 103.85321641);
+    var bike02 = new google.maps.LatLng(1.36166757, 103.85539973);
+    var bike03 = new google.maps.LatLng(1.366866, 103.857252);
+    var bike04 = new google.maps.LatLng(1.368689, 103.855407);
+    var bike05 = new google.maps.LatLng(1.364635, 103.855364);
+    var bike06 = new google.maps.LatLng(1.363706, 103.853758);
+    var bike07 = new google.maps.LatLng(1.364778, 103.857126);
+    var bike08 = new google.maps.LatLng(1.364306, 103.856365);
+    var bike09 = new google.maps.LatLng(1.363867, 103.857266);
+    var bike10 = new google.maps.LatLng(1.363223, 103.856494);
+
+    var demographics = new google.maps.LatLng(1.362601, 103.851539);
+
+    // Load Map to Teck Ghee
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+        center: location,
+        zoom: 17,
+        panControl: false,
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    // Marker Image Load
+    var markerImageCC = {
+        url: 'images/CCicon.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageFitness = {
+        url: 'images/Fitnessicon.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageBus = {
+        url: 'images/bus_marker.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageFood = {
+        url: 'images/Foodicon.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageMarket = {
+        url: 'images/Marketicon.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageCCa = {
+        url: 'images/CommunityCicon.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageOfo = {
+        url: 'images/ofo.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+    var markerImageMobike = {
+        url: 'images/mobike.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(50, 60)
+    };
+    var markerImageAQI = {
+        url: 'images/aqiicon.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(50, 60)
+    };
+    var markerImageDemo = {
+        url: 'images/Demographics.png',
+        size: new google.maps.Size(71, 71), 
+        scaledSize: new google.maps.Size(45, 60)
+    };
+
+
+    // Set Up Nikes for MockUp only
+    var marker_bike01 = new google.maps.Marker({position: bike01, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo});
+    var marker_bike02 = new google.maps.Marker({position: bike02, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo});
+    var marker_bike03 = new google.maps.Marker({position: bike03, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo});
+    var marker_bike04 = new google.maps.Marker({position: bike04, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo}); 
+    var marker_bike05 = new google.maps.Marker({position: bike05, map: map, animation: google.maps.Animation.DROP,icon: markerImageMobike});
+    var marker_bike06 = new google.maps.Marker({position: bike06, map: map, animation: google.maps.Animation.DROP,icon: markerImageMobike});
+    var marker_bike07 = new google.maps.Marker({position: bike07, map: map, animation: google.maps.Animation.DROP,icon: markerImageMobike});
+    var marker_bike08 = new google.maps.Marker({position: bike08, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo});
+    var marker_bike09 = new google.maps.Marker({position: bike09, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo});
+    var marker_bike10 = new google.maps.Marker({position: bike09, map: map, animation: google.maps.Animation.DROP,icon: markerImageOfo});
+
+    var marker_BusStation = new google.maps.Marker({position: beacon_BusStation, map: map, animation: google.maps.Animation.DROP, icon: markerImageBus});
+    var marker_BusStation2 = new google.maps.Marker({position: beacon_BusStation2, map: map, animation: google.maps.Animation.DROP, icon: markerImageBus});
+    var marker_BusStation3 = new google.maps.Marker({position: beacon_BusStation3, map: map, animation: google.maps.Animation.DROP, icon: markerImageBus});
+    var marker_BusStation4 = new google.maps.Marker({position: beacon_BusStation4, map: map, animation: google.maps.Animation.DROP, icon: markerImageBus});
+
+    var marker_fitness2 = new google.maps.Marker({position: beacon_fitness2, map: map, animation: google.maps.Animation.DROP, icon: markerImageFitness});
+
+    var marker_AQI = new google.maps.Marker({ position: aqiicon, map: map, animation: google.maps.Animation.DROP, icon: markerImageAQI});
+    var contentString_AQI = '<p>Average air quality (PSI): <h3><b id="national_psi2">55</b></h3> <br></p><table class="table"><thead><tr><th></th><th><stron>National</stron></th><th>North</th><th>West</th><th>East</th><th>Central</th><th>South</th></tr></thead><tbody><tr><td style="font-weight: bold">PSI</td><td id="national_psi" style="font-weight: bold">55</td><td id="north_psi" style="font-weight: bold">52</td><td id="west_psi" style="font-weight: bold">56</td><td id="east_psi" style="font-weight: bold">49</td><td id="central_psi" style="font-weight: bold">43</td><td id="south_psi" style="font-weight: bold">50</td></tr><tr><td style="font-weight: bold">PM 2.5</td><td id="national_pm25" style="font-weight: bold">11</td><td id="north_pm25" style="font-weight: bold">52</td><td id="west_pm25" style="font-weight: bold">7</td><td id="east_pm25" style="font-weight: bold">8</td><td id="central_pm25" style="font-weight: bold">11</td><td id="south_pm25" style="font-weight: bold">9</td></tr></tbody></table><span style="float:right"><small>last update: today</small></span>';
+    var infowindow_AQI = new google.maps.InfoWindow({
+        content: contentString_AQI, maxWidth: 400});
+    marker_AQI.addListener('click', function () {
+        infowindow_AQI.open(map, marker_AQI);});
+
+    var markerImageDemo = new google.maps.Marker({ position: demographics, map: map, animation: google.maps.Animation.DROP, icon: markerImageDemo});
+    var contentString_Demo = '<div class="x_panel"><div class="x_content"><canvas id="canvasDemographics"></canvas></div></div>';
+    var infowindow_Demo = new google.maps.InfoWindow({
+        content: contentString_Demo, maxWidth: 800});
+    markerImageDemo.addListener('click', function () {
+        infowindow_Demo.open(map, markerImageDemo);});
+
+    // Set Up Location, Content and Listener
+    var marker_blk406A = new google.maps.Marker({
+        position: beacon_blk406A, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageCC});
+    var contentString_blk406A = '<p><strong>Residential Building</strong> Block 406A</p>'+ '<img src="images/outdoorPics/blk406B.png" class="img-responsive center-block" style="width: 70%">' + '<p>Block 406 is included in the Teck Ghee deployment. The north-east corner of the block (A) has a direct link to the wet market and the AMK Market & Food Center. We intend to place beacons there (B) and near the main elevator and letter boxes (C).</p>';
+    var infowindow_blk406A = new google.maps.InfoWindow({
+        content: contentString_blk406A, maxWidth: 400});
+    marker_blk406A.addListener('click', function () {
+        infowindow_blk406A.open(map, marker_blk406A);});
+    // Set Up Location, Content and Listener
+    var marker_blk406B = new google.maps.Marker({
+        position: beacon_blk406B, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageCC});
+    var contentString_blk406B = '<p><strong>Residential Building</strong> Block 406B</p>'+ '<img src="images/outdoorPics/blk406B.png" class="img-responsive center-block" style="width: 70%">' + '<p>Block 406 is included in the Teck Ghee deployment. The north-east corner of the block (A) has a direct link to the wet market and the AMK Market & Food Center. We intend to place beacons there (B) and near the main elevator and letter boxes (C).</p>';
+    marker_blk406B.addListener('click', function () {
+        infowindow_blk406B.open(map, marker_blk406B);});
+    var infowindow_blk406B = new google.maps.InfoWindow({
+        content: contentString_blk406B, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_fitness = new google.maps.Marker({
+        position: beacon_fitness, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageFitness});
+    var contentString_fitness = '<p><strong>Ang Mo Kio Fitness</strong> Area 1</p>'+ '<img src="images/outdoorPics/fitness.png" class="img-responsive center-block" style="width: 70%">' + '<p>The Ang Mo Kio Town Council opened the Elderly Fitness Corner in 2015 in order to enable a senior-friendly community in Teck Ghee. The fitness area has 10+ installations. The area is subject to direct exposure to rain. Thus, remaining possibilities are to stick beacons under fitness equipment’s seats and nearest benches. Block 404 nearest wall might as well be appropriate.</p>';
+    marker_fitness.addListener('click', function () {
+        infowindow_fitness.open(map, marker_fitness);});
+    var infowindow_fitness = new google.maps.InfoWindow({
+        content: contentString_fitness, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_FoodCourtA = new google.maps.Marker({
+        position: beacon_FoodCourtA, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageFood});
+    var contentString_FoodCourtA = '<p><strong>Ang Mo Kio Foodcourt</strong> Area 1</p>'+ '<img src="images/outdoorPics/FoodCourtB.png" class="img-responsive center-block" style="width: 70%">' + '<p>Blk 409 AMK Market & Food Centre (Teck Ghee Square) is a popular area in AMK. The place is divided into two main areas: on the north-side, the hawker center, and on the south- side, the market. The Food Center is quite large, and has 40+ stalls; it is a vibrant place where a lot of elderly people meet during the day. Beacons will be placed on top of food stalls (if possible the one near the centre corners) and near the supporting beam.</p>';
+    marker_FoodCourtA.addListener('click', function () {
+        infowindow_FoodCourtA.open(map, marker_FoodCourtA);});
+    var infowindow_FoodCourtA = new google.maps.InfoWindow({
+        content: contentString_FoodCourtA, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_FoodCourtB = new google.maps.Marker({
+        position: beacon_FoodCourtB, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageFood});
+    var contentString_FoodCourtB = '<p><strong>Ang Mo Kio Foodcourt</strong> Area 2</p>'+ '<img src="images/outdoorPics/FoodCourtB.png" class="img-responsive center-block" style="width: 70%">' + '<p>Blk 409 AMK Market & Food Centre (Teck Ghee Square) is a popular area in AMK. The place is divided into two main areas: on the north-side, the hawker center, and on the south- side, the market. The Food Center is quite large, and has 40+ stalls; it is a vibrant place where a lot of elderly people meet during the day. Beacons will be placed on top of food stalls (if possible the one near the centre corners) and near the supporting beam.</p>';
+    marker_FoodCourtB.addListener('click', function () {
+        infowindow_FoodCourtB.open(map, marker_FoodCourtB);});
+    var infowindow_FoodCourtB = new google.maps.InfoWindow({
+        content: contentString_FoodCourtB, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_MarketA = new google.maps.Marker({
+        position: beacon_MarketA, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageMarket});
+    var contentString_MarketA = '<p><p><strong>Ang Mo Kio Market</strong> Area 1</p></p>'+ '<img src="images/outdoorPics/MarketA.png" class="img-responsive center-block" style="width: 70%">' + '<p>The Market represents more than half of the AMK Center area. We need thus an effective beacons positioning system. Beacons broadcast 2.4 GHz radio waves are susceptible to environmental factors (interference, human bodies, metal obstacles...)</p>';
+    marker_MarketA.addListener('click', function () {
+        infowindow_MarketA.open(map, marker_MarketA);});
+    var infowindow_MarketA = new google.maps.InfoWindow({
+        content: contentString_MarketA, maxWidth: 400});
+    
+    // Set Up Location, Content and Listener
+    var marker_CommunityC = new google.maps.Marker({
+        position: beacon_CommunityC, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageCCa});
+    var contentString_CommunityC = '<p><strong>Community Club</strong> Area 1</p>' + '<img src="images/outdoorPics/CommunityC.png" class="img-responsive center-block" style="width: 70%">' + '<p>Teck Ghee Community Club (CC) on Block 861 is closed until 1st quarter of 2018. Courses and activities have been relocated to other alternative venues. Block 414 is a CC antenna and is opened.</p> <br><a href="https://www.facebook.com/grassrootsclub/">Visit Webpage for upcoming events</a>';
+    marker_CommunityC.addListener('click', function () {
+        infowindow_CommunityC.open(map, marker_CommunityC);});
+    var infowindow_CommunityC = new google.maps.InfoWindow({
+        content: contentString_CommunityC, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_SACBeaconA = new google.maps.Marker({
+        position: beacon_SACBeaconA, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageCC});
+    var contentString_SACBeaconA = '<p><strong>Senior Activity Center</strong> Area 1</p>' + '<img src="images/outdoorPics/SACBeaconB.png" class="img-responsive center-block" style="width: 70%">' + '<p>COMNET Senior Activity Centres (SACs) engage seniors in various activities such as morning exercises, games, health and wellness programmes, as well as arts and crafts sessions. The SACs provide regular outreach, monitoring and support to seniors living within the block.</p>';
+    marker_SACBeaconA.addListener('click', function () {
+        infowindow_SACBeaconA.open(map, marker_SACBeaconA);});
+    var infowindow_SACBeaconA = new google.maps.InfoWindow({
+        content: contentString_SACBeaconA, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_SACBeaconB = new google.maps.Marker({
+        position: beacon_SACBeaconB, 
+        map: map,
+        animation: google.maps.Animation.DROP,
+        icon: markerImageCC});
+    var contentString_SACBeaconB = '<p><strong>Senior Activity Center</strong> Area 1</p>'+ '<img src="images/outdoorPics/SACBeaconB.png" class="img-responsive center-block" style="width: 70%">' + '<p>COMNET Senior Activity Centres (SACs) engage seniors in various activities such as morning exercises, games, health and wellness programmes, as well as arts and crafts sessions. The SACs provide regular outreach, monitoring and support to seniors living within the block.</p>';
+    marker_SACBeaconB.addListener('click', function () {
+        infowindow_SACBeaconB.open(map, marker_SACBeaconB);});
+    var infowindow_SACBeaconB = new google.maps.InfoWindow({
+        content: contentString_SACBeaconB, maxWidth: 400});
+    // Set Up Location, Content and Listener
+    var marker_SACAntenna = new google.maps.Marker({
+        position: beacon_SACAntenna, 
+        map: map, 
+        animation: google.maps.Animation.DROP,
+        icon: markerImageCC});
+    var contentString_SACAntenna = '<p><strong>Senior Activity Center</strong> Area 2</p>'+ '<img src="images/outdoorPics/SACAntenna.png" class="img-responsive center-block" style="width: 60%">' + '<p>Just opposite of the road (Ang Mo Kio Ave 10), the COMNET Senior Activity Centre deployed an antenna. The center is smaller but is very valuable to the elderly people living in the nearest blocks (466, 467, 468, 469, 470, 471, ...476). </p>';
+    marker_SACAntenna.addListener('click', function () {
+        infowindow_SACAntenna.open(map, marker_SACAntenna);});
+    var infowindow_SACAntenna = new google.maps.InfoWindow({
+        content: contentString_SACAntenna, maxWidth: 45000});
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJfyk5q2EyLZpVIiJDNEgiKttj_PqiOT4&libraries=drawing&callback=initMap"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/js/Chart.min.js"></script>
+
+ <!-- Flot -->
+ <script src="/js/Flot/jquery.flot.js"></script>
+ <script src="/js/Flot/jquery.flot.time.js"></script>
+  <!-- DateJS -->
+ <script src="/js/date.js"></script>
+ <script src="/js/dataCollection.js"></script>
+
+<script>
+
+    var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
+        $DDIV = $('#diabetesDiv'),
+        $ADIV = $('#asthmaDiv'),
+        $FORM_BTN = $('#submitDiabetesForm'),
+        $A_FORM_BTN = $('#submitAsthmaForm'),
+        $CLEAR_D = $('#clearDiabetesForm'),
+        $CLEAR_A = $('#clearAsthmaForm'),
+        $ERR_D = $('#error_D'),
+        $AGE_D = $('#age_D'),
+        $HEIGHT_D = $('#height_D'),
+        $WEIGHT_D = $('#weight_D'),
+        $BMI_DIV_D = $('#bmiDiv_D'),
+        $AGE_ERR_A = $('#ageError_A'),
+        $AGE_A = $('#age_A'),
+        $HEIGHT_ERR_A = $('#heightError_A'),
+        $HEIGHT_A = $('#height_A'),
+        $WEIGHT_ERR_A = $('#weightError_A'),
+        $WEIGHT_A = $('#weight_A'),
+        $BMI_DIV_A = $('#bmiDiv_A'),
+        $ETHN = $('#ethSelect'),
+        $SMOKE_A = $('#smokeSelect_A'),
+        $SMOKE_D = $('#smokeSelect_D'),
+        $IMG_D = $('#imageResultDiabetes'),
+        $IMG_A = $('#imageResultAsthma');
+
+    var citizens = <%- JSON.stringify(citizens) %>;
+
+    $(document).ready(function() { 
+
+        $("#diabetesBtn").click(function(){
+            $("#asthmaBtn").removeClass("active");
+            $(this).addClass("active");
+
+            if(!$ADIV.hasClass('hidden')){
+                $ADIV.addClass('hidden');
+            }
+            $DDIV.removeClass('hidden');
+            
+        });
+
+        $("#asthmaBtn").click(function(){
+            $("#diabetesBtn").removeClass("active");
+            $(this).addClass("active");
+
+            if(!$DDIV.hasClass('hidden')){
+                $DDIV.addClass('hidden');
+            }
+            $ADIV.removeClass('hidden');
+            
+        });
+
+        $FORM_BTN.on('click', function(ev) {
+
+            $ERR_D.text("");
+
+            var age = $AGE_D.val();
+            var height = $HEIGHT_D.val();
+            var weight = $WEIGHT_D.val();
+            var alright = checkParameters("diabetes", age, height, weight);
+
+            if(alright) {
+                var bmi = weight / Math.pow(height/100, 2);
+                var gender = $('input[name=gender]:checked', '#diabetesForm').val();
+                var learning = $('#learningR:checked', '#diabetesForm').is(':checked') ? 1 : 0;
+                var cdv = $('#cdvR:checked', '#diabetesForm').is(':checked') ? 1 : 0;
+                var hypt = $('#hyptR:checked', '#diabetesForm').is(':checked') ? 1 : 0;
+                var fh_diab = $('i#fh_diabR:checked', '#diabetesForm').is(':checked') ? 1 : 0;
+                var eth = $ETHN.prop('selectedIndex');
+                var smoke_cat = $SMOKE_D.prop('selectedIndex');
+
+                var score = getScore(gender, age, cdv, learning, hypt, bmi, eth, fh_diab, smoke_cat);
+                
+                if(score < 30) {
+                    $IMG_D.attr("src","images/green-no-risk.png");
+                    $('#resultTextDiabetes').text("AT LOWER RISK OF BEING DIABETIC").css('color', '#6af558');
+                    $('#lastSentenceDiabetes').text("Maintaining a healthy lifestyle will help you continue to keep your risk low.");
+                } else if(30.1 < score && score < 60){
+                    $IMG_D.attr("src","images/yellow-some-risk.png");
+                    $('#resultTextDiabetes').text("AT MODERATE RISK OF BEING DIABETIC").css('color', '#ffbf00');
+                    $('#lastSentenceDiabetes').text("Trying to eat healthier and aiming for 150 mins of physical activity every week will help you improve your diabetes risk");
+                }
+                else {
+                    $IMG_D.attr("src","images/red-high-risk.png");
+                    $('#resultTextDiabetes').text("AT HIGHER RISK OF BEING DIABETIC").css('color', '#ff0000');
+                    $('#lastSentenceDiabetes').text("It is recommended that you go for a health screening to find out more about your health status!");
+                }
+
+                $('#result').removeClass('hidden');
+
+            }
+        });
+
+        $A_FORM_BTN.on('click', function(ev) {
+
+            $AGE_ERR_A.text("");
+            $HEIGHT_ERR_A.text("");
+            $WEIGHT_ERR_A.text("");
+            $BMI_DIV_A.text("");
+
+            var age = $AGE_A.val();
+            var height = $HEIGHT_A.val();
+            var weight = $WEIGHT_A.val();
+            var alright = checkParameters("asthma", age, height, weight);
+
+            if(alright) {
+                var bmi = weight / Math.pow(height/100, 2);
+                var gender = $('input[name=gender]:checked', '#asthmaForm').val();
+                var smoke_cat = $SMOKE_A.prop('selectedIndex');
+                var phy_act = $('#activitySelect').prop('selectedIndex');
+
+                switch(smoke_cat) {
+                    case 0:
+                        $IMG_A.attr("src","/images/green-no-risk.png");
+                        $('#resultTextAsthma').text("AT LOWER RISK OF ASTHMA").css('color', '#6af558');
+                        $('#lastSentenceAsthma').text("Maintaining a healthy lifestyle will help you continue to keep your risk low.");
+                        break;
+                    case 1:
+                    case 2:
+                        $IMG_A.attr("src","/images/yellow-some-risk.png");
+                        $('#resultTextAsthma').text("AT MODERATE RISK OF ASTHMA").css('color', '#ffbf00');
+                        $('#lastSentenceAsthma').text("Trying to eat healthier and aiming for 150 mins of physical activity every week will help you improve your diabetes risk");
+                        break;
+                    case 3:
+                    case 4:
+                        $IMG_A.attr("src","/images/red-high-risk.png");
+                        $('#resultTextAsthma').text("AT HIGHER RISK OF BEING ASTHMA").css('color', '#ff0000');
+                        $('#lastSentenceAsthma').text("It is recommended that you go for a health screening to find out more about your health status!");
+                        break;
+                    default:
+                        break;
+                }
+                $('#resultA').removeClass('hidden');
+            }
+
+        });
+
+        $CLEAR_D.on('click', function(ev) {
+            $('#diabetesForm')[0].reset();
+            $('#activityS').text("");
+            $('#sugarS').text("");
+        });
+
+        $CLEAR_A.on('click', function(ev) {
+            $('#asthmaForm')[0].reset();
+        });
+
+        var exerciceChange = function(){
+            var value = $('input[name=exercise]:checked', '#exerciseDiv').val();
+            if(value == 'lowEx') {
+                text = "Being active helps you look and feel good! Aim for at least 150 minutes of physical activity per week!";
+                color = "#ff0000";
+            } else if(value == 'middleEx') {
+                text = "Aim for at least 150 minutes of physical activity per week for a healthier you.";
+                color = "#ffbf00";
+            } else {
+                text = "Well done, keep it up!";
+                color = "#6af558";
+            }
+            $('#activityS').text(text).css('color', color);
+        };
+
+        var sugarChange = function(){
+            var value = $('input[name=sugar]:checked', '#sugarDiv').val();
+            if(value == 'lowS') {
+                text = "Good! Choose water instead of sweetened drinks whenever possible.";
+                color = "#6af558";
+            } else if(value == 'middleS') {
+                text = "Sugar in drinks increases your calorie intake without making you feel full. Water is your best choice! Or, choose drinks with no or less sugar content whenever possible.";
+                color = "#ffbf00";
+            } else {
+                text = "Time to make some changes. Start by choosing drinks with less sugar - look for the healthier choice logo on canned or packaged drinks, or ask for less sugar when buying tea or coffee. Better still, choose water!";
+                color = "#ff0000";
+            }
+            $('#sugarS').text(text).css('color', color);
+        }
+
+        $('input[name=exercise]').on('change', function() {
+            exerciceChange();
+        });
+
+        $('input[name=sugar]').on('change', function() {
+            sugarChange();
+        });
+
+        $('input[name=activity]').on('change', function() {
+            var value = $('input[name=activity]:checked', '#activityDiv').val();
+            if(value == 'lowEx') {
+                text = "Being active helps you look and feel good! Aim for at least 150 minutes of physical activity per week!";
+                color = "#ff0000";
+            } else if(value == 'middleEx') {
+                text = "Aim for at least 150 minutes of physical activity per week for a healthier you.";
+                color = "#ffbf00";
+            } else {
+                text = "Well done, keep it up!";
+                color = "#6af558";
+            }
+            $('#activityA').text(text).css('color', color);
+        });
+
+        $('#my-table tbody tr').on("click", function(ev) {
+            $('#activityS').text("");
+            $('#sugarS').text("");
+            var row = ($(this).index());
+            if(citizens[row].Gender == "Female"){
+                $('input[value=female]', '#diabetesForm').prop('checked', true);
+                $('input[value=female]', '#asthmaForm').prop('checked', true);
+            }
+            else {
+                $('input[value=male]', '#diabetesForm').prop('checked', true);
+                $('input[value=male]', '#asthmaForm').prop('checked', true);
+            }
+            $AGE_D.val(citizens[row].Age);
+            $AGE_A.val(citizens[row].Age);
+            $HEIGHT_D.val(citizens[row].Height);
+            $HEIGHT_A.val(citizens[row].Height);
+            $WEIGHT_D.val(citizens[row].Weight);
+            $WEIGHT_A.val(citizens[row].Weight);
+            $ETHN.val(citizens[row].Eth);
+            if(citizens[row].LearnDis == 1){
+                $('input[value=learning_disY]', '#diabetesForm').prop('checked', true);
+            }
+            else {
+                $('input[value=learning_disN]', '#diabetesForm').prop('checked', true);
+            }
+            if(citizens[row].Cdv == 1){
+                $('input[value=cdvY]', '#diabetesForm').prop('checked', true);
+            }
+            else {
+                $('input[value=cdvN]', '#diabetesForm').prop('checked', true);
+            }
+            if(citizens[row].Hypth == 1){
+                $('input[value=hyptY]', '#diabetesForm').prop('checked', true);
+            }
+            else {
+                $('input[value=hyptN]', '#diabetesForm').prop('checked', true);
+            }
+            if(citizens[row].Family_diab == 1){
+                $('input[value=fh_diabY]', '#diabetesForm').prop('checked', true);
+            }
+            else {
+                $('input[value=fh_diabN]', '#diabetesForm').prop('checked', true);
+            }
+            $SMOKE_D.val(citizens[row].Smoke_cat);
+            $SMOKE_A.val(citizens[row].Smoke_cat);
+            $('#activitySelect').val(citizens[row].Physical_act);
+            if(citizens[row].Physical_act == "Light"){
+                $('input[value=lowEx]', '#diabetesForm').prop('checked', true);
+            } else if(citizens[row].Physical_act == "Moderate") {
+                $('input[value=middleEx]', '#diabetesForm').prop('checked', true);
+            } else {
+                $('input[value=highEx]', '#diabetesForm').prop('checked', true);
+            }
+
+            if(citizens[row].Sugar == 0){
+                $('input[value=lowS]', '#diabetesForm').prop('checked', true);
+            } else if(citizens[row].Physical_act == 1) {
+                $('input[value=middleS]', '#diabetesForm').prop('checked', true);
+            } else {
+                $('input[value=highS]', '#diabetesForm').prop('checked', true);
+            }
+
+            exerciceChange();
+            sugarChange();
+
+        });
+
+        if ($('#lineChart').length ){   
+            
+              var ctx = document.getElementById("lineChart");
+              var lineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: ["Q1 2018", "Q2 2018", "Q3 2018", "Q4 2018", "Q1 2019"],
+                  datasets: [{
+                    label: "Wellbeing (ESS and PHQ9)",
+                    backgroundColor: "rgba(38, 185, 154, 0.07)",
+                    borderColor: "rgba(38, 185, 154, 0.7)",
+                    pointBorderColor: "rgba(38, 185, 154, 0.7)",
+                    pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointBorderWidth: 1,
+                    data: [17, 17, 19, 20, 18]
+                  }, {
+                    label: "Verlato risk (asthma)",
+                    backgroundColor: "rgba(3, 00, 106, 0.05)",
+                    borderColor: "rgba(3, 88, 70, 0.70)",
+                    pointBorderColor: "rgba(3, 88, 70, 0.70)",
+                    pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(151,187,205,1)",
+                    pointBorderWidth: 1,
+                    data: [26, 27, 25, 22, 16]
+                  }, 
+                    {
+                    label: "IPAQ-SHORT (Physical Activities)",
+                    backgroundColor: "rgba(38, 185, 154, 0.05)",
+                    borderColor: "rgba(38, 185, 154, 0.70)",
+                    pointBorderColor: "rgba(38, 185, 154, 0.70)",
+                    pointBackgroundColor: "rgba(38, 185, 154, 0.70)",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(151,187,205,1)",
+                    pointBorderWidth: 1,
+                    data: ["38", "42", "53", "65", "64"]
+                  }, 
+                  {
+                    label: "Diabetes risk (Findrisk including lifestyle)",
+                    backgroundColor: "rgba(3, 00, 106, 0.05)",
+                    borderColor: "rgba(3, 88, 70, 0.70)",
+                    pointBorderColor: "rgba(3, 88, 70, 0.70)",
+                    pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(151,187,205,1)",
+                    pointBorderWidth: 1,
+                    data: ["62", "64", "56", "41", "29"]
+                  }]
+                },
+              });
+            }
+        
+
+        if ($('#canvasDoughnut').length ){ 
+              
+            var ctx = document.getElementById("canvasDoughnut");
+            var data = {
+            labels: [
+                "No, I have never smoked",
+                "No",
+                "I was a smoker",
+                "Yes, I currently smoke",
+                "I used to smoke"
+            ],
+            datasets: [{
+                data: [50.7, 19.4, 6, 7.5, 16.4],
+                //data: [530710, 20252, 35821, 12013, 234123, 602132, 450123],
+                backgroundColor: [
+                "#73879C",
+                "#4618FF",
+                "#9ebcda",
+                "#8c96c6",
+                "#6e016b"
+                ],
+                hoverBackgroundColor: [
+                "#73879C",
+                "#c5d7e8",
+                "#A7C2DD",
+                "#97a0cb",
+                "#7c1a79"
+                ]
+            }]
+        };
+
+            var canvasDoughnut = new Chart(ctx, {
+                type: 'doughnut',
+                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                data: data,
+                options: {
+                    legend: true,
+                    title: {
+                        fontSize: 15,
+                        display: true,
+                        text: 'Do you currently smoke, or have you ever smoked?'
+                    },
+                    height: 380
+                }
+            });
+            
+        } 
+
+        if ($('#canvasDoughnut2').length ){ 
+            var ctx = document.getElementById("canvasDoughnut2");
+            var data = {
+            labels: [
+                "Yes",
+                "Not currently, but I have in the past",
+                "No, I have never consumed alcoholic beverages",
+                "Not currently, but I did in the past",
+                "No, I never drinked alcoholic beverages"
+            ],
+            datasets: [{
+                data: [60.3, 7.4, 22.1, 5.9, 4.4],
+                //data: [530710, 20252, 35821, 12013, 234123, 602132, 450123],
+                backgroundColor: ["#73879C","#4618FF","#9ebcda","#8c96c6","#6e016b"],
+                hoverBackgroundColor: ["#73879C","#c5d7e8","#A7C2DD","#97a0cb","#7c1a79"
+                ]
+            }]
+        };
+            var canvasDoughnut2 = new Chart(ctx, {
+                type: 'doughnut',
+                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                data: data,
+                options: {
+                    legend: true,
+                    title: {
+                        fontSize: 15,
+                        display: true,
+                        text: 'Do you consume alcoholic beverages?'
+                    },
+                    height: 380
+                }
+            }); 
+        }
+
+        if ($('#canvasDoughnut3').length ){ 
+            var ctx = document.getElementById("canvasDoughnut3");
+            var data = {
+            labels: [
+                "No, never",
+                "Yes, Type 1 Diabetes",
+                "Yes, Type 2 Diabetes",
+                "Yes, Gestational Diabetes (diabetesthat occurs only during pregnancy)"
+            ],
+            datasets: [{
+                data: [84.8, 3, 6.1, 6.1],
+                //data: [530710, 20252, 35821, 12013, 234123, 602132, 450123],
+                backgroundColor: ["#73879C","#4618FF","#9ebcda","#6e016b"],
+                hoverBackgroundColor: ["#73879C","#c5d7e8","#A7C2DD","#7c1a79"
+                ]
+            }]
+        };
+            var canvasDoughnut3 = new Chart(ctx, {
+                type: 'doughnut',
+                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                data: data,
+                options: {
+                    legend: true,
+                    title: {
+                        fontSize: 15,
+                        display: true,
+                        text: 'Have you ever been diagnosed with Diabetes?'
+                    },
+                    height: 380
+                }
+            }); 
+        }
+
+        if ($('#canvasDemographics').length ){ 
+              
+            var ctx = document.getElementById("canvasDemographics");
+            var data = {
+            labels: ["White or not stated","Indian","Pakistani","Bangladeshi","Other Asian","Chinesse","Malay",],
+            datasets: [{
+                data: [530710, 20252, 35821, 12013, 234123, 602132, 450123],
+                backgroundColor: ["#edf8fb","#bfd3e6","#9ebcda","#8c96c6","#8c6bb1","#88419d","#6e016b"],
+                hoverBackgroundColor: ["#eef8fb","#c5d7e8","#A7C2DD","#97a0cb","#9779b8", "#9354a6","#7c1a79"]
+            }]
+        };
+            var canvasDemographics = new Chart(ctx, {
+                type: 'doughnut',
+                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                data: data,
+                options: {
+                    legend: false,
+                    title: {
+                        fontSize: 24,
+                        display: true,
+                        text: 'Ethnic groups'
+                    },
+                    height: 0
+                }
+            });
+            
+        } 
+
+        if ($('#canvasDoughnut4').length ){ 
+            var ctx = document.getElementById("canvasDoughnut4");
+            var data = {
+            labels: [
+                "Yes",
+                "No",
+                "Maybe",
+                "N/A"
+            ],
+            datasets: [{
+                data: [51.5, 45.6, 2.9, 0],
+                //data: [530710, 20252, 35821, 12013, 234123, 602132, 450123],
+                backgroundColor: ["#73879C","#4618FF","#9ebcda","#6e016b"],
+                hoverBackgroundColor: ["#73879C","#c5d7e8","#A7C2DD","#7c1a79"
+                ]
+            }]
+        };
+            var canvasDoughnut4 = new Chart(ctx, {
+                type: 'doughnut',
+                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                data: data,
+                options: {
+                    legend: true,
+                    title: {
+                        fontSize: 15,
+                        display: true,
+                        text: 'Have any of your relatives been diagnosed with Diabetes?'
+                    },
+                    height: 380
+                }
+            }); 
+        }
+    
+        if ($('#mybarChart').length ){ 
+              
+            var ctx = document.getElementById("mybarChart");
+            var mybarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["2018 Female", "2018 Males", "2018 Total"],
+                datasets: [{
+                    label: 'White or not stated',
+                    backgroundColor: "#a5adaf",
+                    data: ["266798", "263912", "530710"]
+                }, {
+                    label: 'Indian',
+                    backgroundColor: "#bfd3e6",
+                    data: ["165967", "248950", "414918"]
+                }
+                , {
+                    label: 'Pakistani',
+                    backgroundColor: "#9ebcda",
+                    data: ["3000", "1562", "4562"]
+                }
+                , {
+                    label: 'Bangladeshi',
+                    backgroundColor: "#8c96c6",
+                    data: ["68482", "31531", "100000"]
+                }
+                , {
+                    label: 'Other Asian',
+                    backgroundColor: "#8c6bb1",
+                    data: ["68482", "59531", "128013"]
+                }
+                , {
+                    label: 'Chinesse',
+                    backgroundColor: "#88419d",
+                    data: ["2712115", "1389445", "4149180"]
+                }
+                , {
+                    label: 'Malay',
+                    backgroundColor: "#6e016b",
+                    data: ["68482", "59531", "128013"]
+                }]
+            },
+
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                        beginAtZero: true
+                        }
+                    }]
+                },
+                legend: false,
+                title: {
+                    fontSize: 24,
+                    display: true,
+                    text: 'Gender breakdown'
+                }
+            }
+            });
+            
+        } 
+
+        var chart_plot_02_data = [];
+
+        var randNum = function() {
+            return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
+        };
+
+        for (var i = 0; i < 30; i++) {
+            chart_plot_02_data.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
+        }
+
+        var chart_plot_02_settings = {
+            grid: {
+                show: true,
+                aboveData: true,
+                color: "#3f3f3f",
+                labelMargin: 10,
+                axisMargin: 0,
+                borderWidth: 0,
+                borderColor: null,
+                minBorderMargin: 5,
+                clickable: true,
+                hoverable: true,
+                autoHighlight: true,
+                mouseActiveRadius: 100
+            },
+            series: {
+                lines: {
+                    show: true,
+                    fill: true,
+                    lineWidth: 2,
+                    steps: false
+                },
+                points: {
+                    show: true,
+                    radius: 4.5,
+                    symbol: "circle",
+                    lineWidth: 3.0
+                }
+            },
+            legend: {
+                position: "ne",
+                margin: [0, -25],
+                noColumns: 0,
+                labelBoxBorderColor: null,
+                labelFormatter: function(label, series) {
+                    return label + '&nbsp;&nbsp;';
+                },
+                width: 40,
+                height: 1
+            },
+            colors: ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'],
+            shadowSize: 0,
+            tooltip: true,
+            tooltipOpts: {
+                content: "%s: %y.0",
+                xDateFormat: "%d/%m",
+            shifts: {
+                x: -30,
+                y: -50
+            },
+            defaultTheme: false
+            },
+            yaxis: {
+                min: 0,
+                max:100
+            },
+            xaxis: {
+                mode: "time",
+                minTickSize: [1, "day"],
+                timeformat: "%d/%m/%y",
+                min: chart_plot_02_data[0][0],
+                max: chart_plot_02_data[20][0]
+            }
+        };
+    
+        if ($("#chart_plot_02").length){
+            console.log('Plot2');
+            
+            $.plot( $("#chart_plot_02"), 
+            [{ 
+                label: "10000 Steps goal (%)", 
+                data: chart_plot_02_data, 
+                lines: { 
+                    fillColor: "rgba(150, 202, 89, 0.12)" 
+                }, 
+                points: { 
+                    fillColor: "#fff" } 
+            }], chart_plot_02_settings);
+            
+        }
+    });
+   
+</script>
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            PULSE Project
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="js/Chart.min.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+
+
+    <script src="js/samplepopulation.js"></script>
+  </body>
+</html>

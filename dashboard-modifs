@@ -1,0 +1,17 @@
+Citizens registered > Cohort composition
+Tools and models (add toolbox import and score export
+Harmonize header and get rid of Ubismart footer)
+
+
+Add header:
+
+<nav class="navbar navbar-default" style="border-radius: 0px">
+  <div class="container-fluid">
+    <div>
+      <a href="#"><img width="150px" style="margin-top: 20px" src="http://109.111.225.85:8080/PULSE-endpoint/images/pulse_logo_green.png"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#"><strong>Piloting & Deployment Administration</strong></a></li>
+    </ul>
+  </div>
+</nav>
